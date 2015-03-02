@@ -7,8 +7,6 @@ public class MusicRunner
     int count = 0;
     MusicReader mr = new MusicReader();
     
-    mr.open("musiclist.csv");
-    
     String[] data = mr.getSongData();
     
     // First line contains all the fields - We don't want to save this anywhere but we can
@@ -30,11 +28,37 @@ public class MusicRunner
       
       count++;
       
-      if (count == 1)  // For now only read ONE song
+      if (count < al.size)  // For now only read ONE song (AL-SIZE)
+      {
+        ArrayList al = new ArrayList();
+        System.out.println("Starting size of al: " + al.size());
+        
+        al.add("Wake Me Up");
+        al.add("Radioactive");
+        al.add("Summer");
+        al.add("Hey, Brother");
+        al.add("Yellow Submarine");
+        al.add("99 Problems");
+        al.add("Niggas in Paris");
+        al.add("Numb/Encore");
+        al.add("Empire State of Mind");
+        al.add("Stan");
+        System.out.println("Size of al after additions: " + al.size());
+        
+        System.out.println("Contents of al: " + al);
+        
+        al.remove("99 Problems");
+        al.remove("Stan");
+        System.out.println("Size after Deletions: " + al.size());
+        System.out.println("Contents after Deletion: " + al);
+      }
         break;
       
       data = mr.getSongData();  // Get next line of song data
     }
+      }
+    }
+    mr.open("musiclist.csv");
     
     mr.close();
   }

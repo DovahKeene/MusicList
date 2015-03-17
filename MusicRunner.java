@@ -11,7 +11,7 @@ public class MusicRunner
   
   public static void main (String[] args)
   {
-    int count = 0;
+    int count = 1;
     MusicReader mr = new MusicReader();
     
     mr.open("musiclist.csv");
@@ -24,7 +24,7 @@ public class MusicRunner
     
     data = mr.getSongData();  // Get next line of song data
     
-    ArrayList<Song> songList = new ArrayList(10);
+    ArrayList<Song> songList = new ArrayList();
     
     // if data is null then we were unable to read a line of song data, so
     // this loop will continue to read lines of song data as long as there
@@ -48,7 +48,7 @@ public class MusicRunner
       }
       
       
-      if (count == 10)  // For now only read ONE song
+      if (count == 1)  // For now only read ONE song
         break;
       
       data = mr.getSongData();  // Get next line of song data

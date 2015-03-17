@@ -16,6 +16,31 @@ public class Song {
     this.notes = notes;
   }
   
+  public String getArtist()
+  {
+    return artist;
+  }
+  
+  public String getName()
+  {
+    return name;
+  }
+  
+  public int getYear()
+  {
+   return year; 
+  }
+  
+  public double getScore()
+  {
+    return score;
+  }
+  
+  public String getNotes()
+  {
+    return notes;
+  }
+  
   /* ADD YOUR CODE HERE */
   
 }

@@ -35,8 +35,16 @@ public class MusicRunner
       int year = Integer.parseInt(clean(data[3]));
       
       // Let's try to create a Song object
-      Song song = new Song(clean(data[0]), data[1], year, 4.5, "notes here");  // data[0] is the artist and data[1] is the name
-      
+      Song song1 = new Song(clean(data[0]), data[1]);  // data[0] is the artist and data[1] is the name
+      Song song2 = new Song(clean(data[0]), data[1]);
+      Song song3 = new Song(clean(data[0]), data[1]);
+      Song song4 = new Song(clean(data[0]), data[1]);
+      Song song5 = new Song(clean(data[0]), data[1]);
+      Song song6 = new Song(clean(data[0]), data[1]);
+      Song song7 = new Song(clean(data[0]), data[1]);
+      Song song8 = new Song(clean(data[0]), data[1]);
+      Song song9 = new Song(clean(data[0]), data[1]);
+      Song song10 = new Song(clean(data[0]), data[1]);
       count++;
       
       if (count == 2)  // For now only read ONE song

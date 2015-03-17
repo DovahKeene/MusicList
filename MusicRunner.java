@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.*;
 
 public class MusicRunner
 {
@@ -24,33 +24,40 @@ public class MusicRunner
     
     data = mr.getSongData();  // Get next line of song data
     
+    ArrayList<Song> songList = new ArrayList(10);
+    
     // if data is null then we were unable to read a line of song data, so
     // this loop will continue to read lines of song data as long as there
     // IS song data available
     while (data != null)
     {
       // You probably will comment this out but for now print out the line so you can see what is there
-      System.out.println(Arrays.toString(data));
+      //System.out.println(Arrays.toString(data));
       
       int year = Integer.parseInt(clean(data[3]));
+      double rank = Double.parseDouble(clean(data[4]));
       
       // Let's try to create a Song object
-      Song song1 = new Song(clean(data[0]), data[1]);  // data[0] is the artist and data[1] is the name
-      Song song2 = new Song(clean(data[0]), data[1]);
-      Song song3 = new Song(clean(data[0]), data[1]);
-      Song song4 = new Song(clean(data[0]), data[1]);
-      Song song5 = new Song(clean(data[0]), data[1]);
-      Song song6 = new Song(clean(data[0]), data[1]);
-      Song song7 = new Song(clean(data[0]), data[1]);
-      Song song8 = new Song(clean(data[0]), data[1]);
-      Song song9 = new Song(clean(data[0]), data[1]);
-      Song song10 = new Song(clean(data[0]), data[1]);
-      count++;
+     
+      if(clean(data[2]).equals("song"))
+      {
+        Song song = new Song(clean(data[0]), data[1], year, rank, clean(data[16]));  // data[0] is the artist and data[1] is the name
+        songList.add(song);
       
-      if (count == 2)  // For now only read ONE song
+        count++;
+      }
+      
+      
+      if (count == 10)  // For now only read ONE song
         break;
       
       data = mr.getSongData();  // Get next line of song data
+    }
+    
+    for(int x = songList.size() - 1; x >= 0; x--)
+    {
+      System.out.println(songList.get(x).getArtist() + " " + songList.get(x).getName() + " " + songList.get(x).getYear() + 
+                         " " + songList.get(x).getScore() + " " + songList.get(x).getNotes());
     }
     
     mr.close();

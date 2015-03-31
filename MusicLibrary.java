@@ -30,12 +30,18 @@ public class MusicLibrary {
       return null;
   }
   
+  public int getSize()
+  {
+    return songs.size();
+  }
+  
+  
   /*
    * Sort song list by title
    */
   public void Sort ()
   {
-     //currentSortField = field;
+     Collections.sort(songs);
   }
   
   /*
@@ -47,6 +53,12 @@ public class MusicLibrary {
   public void Sort (int field)
   {
     currentSortField = field;
+    
+    if (currentSortField == 2)
+      Collections.sort(songs, Song.SongArtistComparator);
+    else
+      this.Sort();
+      
   }
   
   /*

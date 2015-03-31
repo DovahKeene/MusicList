@@ -43,12 +43,13 @@ public class Song implements Comparable<Song>{
     return notes;
   }    
   
-  public int CompareTo(String compareSong)
+  public int compareTo(Song compareSong)
   {
-    int compareQuantity = ((Song) compareSong).getQuantity
+      String songName = compareSong.getName();
+      return this.getName().compareTo(songName);
   }
   
-  
+ /* 
   public static Comparator<Song> SongNameComparator = new Comparator<Song>()
   {
     public int compare(Song song1, Song song2)
@@ -59,7 +60,7 @@ public class Song implements Comparable<Song>{
       return songName1.compareTo(songName2);
     }
     
-  };
+  };*/
   
   public static Comparator<Song> SongArtistComparator = new Comparator<Song>()
   {

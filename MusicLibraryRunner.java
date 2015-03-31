@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class MusicRunner
+public class MusicLibraryRunner
 {
   // Strip off the double quotes from input and trim off any whitespace
   public static String clean (String input)
@@ -13,7 +13,8 @@ public class MusicRunner
   {
     int count = 0;
     MusicReader mr = new MusicReader();
-    
+    Scanner scanner = new Scanner(System.in);
+   
     mr.open("musiclist.csv");
     
     String[] data = mr.getSongData();
@@ -24,7 +25,9 @@ public class MusicRunner
     
     data = mr.getSongData();  // Get next line of song data
     
-    ArrayList<Song> songList = new ArrayList();
+    //ArrayList<Song> songList = new ArrayList();
+    
+    MusicLibrary library = new MusicLibrary();
     
     // if data is null then we were unable to read a line of song data, so
     // this loop will continue to read lines of song data as long as there
@@ -42,7 +45,7 @@ public class MusicRunner
       if(clean(data[2]).equals("song"))
       {
         Song song = new Song(clean(data[0]), data[1], year, rank, clean(data[16]));  // data[0] is the artist and data[1] is the name
-        songList.add(song);
+        library.addSong(song);
       
         count++;
       }
@@ -55,11 +58,18 @@ public class MusicRunner
     }
     
     
-    for(int x = songList.size() - 1; x >= 0; x--)
+    library.Sort();
+    
+    for(int x = 0; x < library.getSize(); x++)
     {
-      System.out.println(songList.get(x).getArtist() + " " + songList.get(x).getName());
+      System.out.println(library.getSong(x).getArtist() + " " + library.getSong(x).getName());
     }
     
+    System.out.println("Enter a song library number (0-9) to display the corresponding song's description: ");
+    int userInput = scanner.nextInt();
+    
+    System.out.println(library.getSong(userInput).getNotes());
+
     
     mr.close();
   }

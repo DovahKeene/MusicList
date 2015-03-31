@@ -5,8 +5,9 @@ public class MusicLibrary {
   private ArrayList<Song> songs;
   private int currentSortField = 0;  // Unsorted
   
-  public MusicLibrary() { 
-    /* YOUR CONSTRUCTOR CODE HERE*/
+  public MusicLibrary() 
+  { 
+    songs = new ArrayList();
   }
   
   /* 
@@ -14,7 +15,7 @@ public class MusicLibrary {
    */
   public void addSong (Song song)
   {
-    
+    songs.add(song);
   }
   
   /*
@@ -23,7 +24,10 @@ public class MusicLibrary {
    */
   public Song getSong (int num)
   {
-    return null;
+    if (num < songs.size())
+      return songs.get(num);
+    else
+      return null;
   }
   
   /*
